@@ -3,8 +3,7 @@ The tool is helped to you to check your web site on Dos attack
 
 
 -m:
-
-    regime mode: [http or icmp] (default tcp) = 0
+regime mode: [http or icmp] (default tcp) = 0
 
 -v:
 
