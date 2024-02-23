@@ -3,16 +3,16 @@ The tool is helped to you to check your web site on Dos attack
 
 
 -m:
-regime mode: [http or icmp] (default tcp) = 0
+regime mode: [http or icmp] (default tcp)
 
 -v:
-entering target: (target.com) = 1
+entering target: (target.com)
 
 -p:
-entering target's port: (default 80) = 3
+entering target's port: (default 80)
 
 -t:
-indicated the number of thread: (default 2) = 4
+indicated the number of thread: (default 2)
 
 -i:
 entering time: (default 1s)
