@@ -11,7 +11,7 @@ std::string get_ip_host(char *host) {
 
     struct hostent *chost;
     struct in_addr **addr;
-    int count;
+    unsigned int count;
     char raddr[64];
 
     if ((chost = gethostbyname(host)) == NULL)
