@@ -22,7 +22,7 @@ HELP
 
 How to compile:
 
-    cmake CMakeLists.txt && make && make clean
+    cmake CMakeLists.txt && make
 
 
 Example:
