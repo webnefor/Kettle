@@ -33,7 +33,7 @@ int CoreServer::start() {
     struct timeval tv;
 
     tv.tv_sec = 0;
-    tv.tv_usec = 85000;
+    tv.tv_usec = 3;
 
     fd_set wset;
 
@@ -52,8 +52,8 @@ int CoreServer::start() {
         status = connect(sock, (struct sockaddr *) &configuration, strsize);
 
         if (errno != EINPROGRESS && errno != EWOULDBLOCK) {
-            perror("\033[033m\n");
-            close(sock);
+            perror("[\033[033m]\n");
+//            close(sock);
         }
 
         if (status < 0)
@@ -63,13 +63,13 @@ int CoreServer::start() {
         if (result == 0)
         {
             printf("\033[031m(%s) <501> [-]\n",CoreServer::host.c_str());
-            close(sock);
+//            close(sock);
         }
 
         else if (result < 0) {
-            perror("\033[033m\n");
-            close(sock);
-            exit(1);
+            perror("[\033[033m]\n");
+//            close(sock);
+//            exit(1);
         }
 
         printf("\033[032m(%s) <200> [+]\n",CoreServer::host.c_str());
@@ -79,7 +79,6 @@ int CoreServer::start() {
 
     } catch (const std::exception &er) {
         std::cerr << er.what() << std::endl;
-        return -1;
     }
 
 
