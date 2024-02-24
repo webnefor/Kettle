@@ -10,10 +10,8 @@ int main(int argc, char *argv[]) {
     CoreServer Kernel(conf);
 
     while (true) {
-        
+        std::vector <std::thread> tsplit;
         try {
-            std::vector <std::thread> tsplit;
-
             for (int i = 0; i < conf.thread; i++) {
                 tsplit.push_back(std::thread(&CoreServer::start, &Kernel));
             }
@@ -24,7 +22,6 @@ int main(int argc, char *argv[]) {
 
             tsplit.clear();
         } catch (const std::exception &err) {
-
             std::cerr << err.what() << std::endl;
             continue;
         }
