@@ -1,7 +1,7 @@
 
 #include "src/config.hpp"
-
 #include <thread>
+
 
 int main(int argc, char *argv[]) {
 
@@ -9,14 +9,24 @@ int main(int argc, char *argv[]) {
 
     CoreServer Kernel(conf);
 
-    while (1) {
+    while (true) {
+        
+        try {
+            std::vector <std::thread> tsplit;
 
-        std::thread split[conf.thread];
+            for (int i = 0; i < conf.thread; i++) {
+                tsplit.push_back(std::thread(&CoreServer::start, &Kernel));
+            }
 
-        for (int i = 0; i < conf.thread; i++) {
-            split[i] = std::thread(&CoreServer::start, &Kernel);
+            for (auto &th: tsplit) {
+                th.join();
+            }
 
-            split[i].join();
+            tsplit.clear();
+        } catch (const std::exception &err) {
+
+            std::cerr << err.what() << std::endl;
+            continue;
         }
     }
 
