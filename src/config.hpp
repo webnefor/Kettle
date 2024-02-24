@@ -33,7 +33,7 @@ namespace opt {
     struct options_flag {
         unsigned int mtime     = 1;
         unsigned int port      = 80;
-        unsigned int thread    = 25;
+        unsigned int thread    = 2;
         std::string mode            = "http";
         std::string host            = "NONE";
         bool help                   = false;
