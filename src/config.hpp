@@ -31,9 +31,9 @@ namespace opt {
     void show_help();
 
     struct options_flag {
-        std::int_fast16_t mtime     = 1;
-        std::int_fast16_t port      = 80;
-        std::int_fast16_t thread    = 2;
+        unsigned int mtime     = 1;
+        unsigned int port      = 80;
+        unsigned int thread    = 25;
         std::string mode            = "http";
         std::string host            = "NONE";
         bool help                   = false;
@@ -56,10 +56,9 @@ public:
     int start();
 
 private:
-    std::int16_t ms = 1; // time ms
-    std::int16_t port;
-    std::int16_t thread;
+    unsigned int ms = 1; // time ms
+    unsigned int port;
+    unsigned int thread;
     std::string host;
-    std::int8_t active;
-
+    signed int active;
 };
