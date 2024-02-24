@@ -32,8 +32,8 @@ int CoreServer::start() {
 
     struct timeval tv;
 
-    tv.tv_sec = 0;
-    tv.tv_usec = 3;
+    tv.tv_sec = 2;
+    tv.tv_usec = 0;
 
     fd_set wset;
 
