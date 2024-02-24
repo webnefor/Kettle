@@ -5,24 +5,17 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <netinet/in.h>
-#include <net/if.h>
 #include <sys/select.h>
 #include <unistd.h>
-#include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
 
-#include <mutex>
-
-std::mutex mtx;
 
 int CoreServer::start() {
 
-    mtx.lock();
-
     char buff[1024];
-    int sock, result, status, flags;
+    unsigned int sock, result, status, flags;
     socklen_t strsize;
     struct sockaddr_in configuration;
 
@@ -88,7 +81,6 @@ int CoreServer::start() {
         return -1;
     }
 
-    mtx.unlock();
 
     return 0;
 }
