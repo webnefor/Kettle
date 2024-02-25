@@ -1,4 +1,3 @@
-
 #include "hcore.hpp"
 
 
@@ -20,19 +19,19 @@ struct opt::options_flag opt::parse(int argc, char *argv[]) {
     for (int i = 0; i < argc; i++) {
         try {
             if (argv[i] == array_opt.at(0)) {
-                set_options.mode    = argv[i + 1];
+                set_options.mode        = argv[i + 1];
             }
             if (argv[i] == array_opt.at(1)) {
-                set_options.host    = get_ip_host(argv[i + 1]);
+                set_options.host        = get_ip_host(argv[i + 1]);
             }
             if (argv[i] == array_opt.at(2)) {
-                set_options.port    = atoi(argv[i + 1]);
+                set_options.port        = atoi(argv[i + 1]);
             }
             if (argv[i] == array_opt.at(3)) {
-                set_options.thread  = atoi(argv[i + 1]);
+                set_options.thread      = atoi(argv[i + 1]);
             }
             if (argv[i] == array_opt.at(4)) {
-                set_options.help    = true;
+                set_options.help        = true;
             }
         }
         catch (const std::exception &error)
@@ -41,6 +40,10 @@ struct opt::options_flag opt::parse(int argc, char *argv[]) {
             std::cerr << error.what() << std::endl;
             exit(-1);
         }
+    }
+    if (set_options.port < 20) {
+        opt::show_help();
+        exit(1);
     }
 
     if (set_options.help) {
@@ -69,4 +72,3 @@ void opt::show_help() {
     cout << endl;
 
 }
-
