@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include <cstring>
 
-int CoreServer::start() {
+int CoreServer::start_http() {
 
     socklen_t strsize;
     fd_set wset;
@@ -16,7 +16,6 @@ int CoreServer::start() {
     struct sockaddr_in configuration{};
     struct timeval tv{};
 
-    char buff[1024];
     unsigned int sock, result, status, flags,yes =1;
 
     configuration.sin_addr.s_addr = inet_addr(
@@ -26,7 +25,6 @@ int CoreServer::start() {
             CoreServer::port
             );
     configuration.sin_family      = AF_INET;
-//    flags = fcntl(sock, F_GETFL, 0);
 
     strsize = sizeof configuration;
 
@@ -38,7 +36,6 @@ int CoreServer::start() {
         sock = socket(AF_INET, SOCK_STREAM, 0);
 
         if (sock == -1) {
-            perror("socket[-]");
             close(sock);
             return -1;
         }
@@ -52,15 +49,13 @@ int CoreServer::start() {
             status = select(sock, NULL, &wset, NULL, &tv);
 
         send(sock, HEADER, strlen(HEADER), 0);
-        recv(sock, buff, 1024, 0);
 
         if (status == -1) {
             close(sock);
-            perror("if");
             return -1;
         }
 
-        printf("\033[032m64 bytes to (%s) [+]\n", CoreServer::host.c_str());
+        printf("\033[032m64 bytes to (%s):%i\n", CoreServer::host.c_str(),CoreServer::port);
 
         close(sock);
 
