@@ -33,7 +33,7 @@ namespace opt {
     struct options_flag {
         unsigned int mtime     = 1;
         unsigned int port      = 80;
-        unsigned int thread    = 2;
+        unsigned int thread    = 5;
         std::string mode            = "http";
         std::string host            = "NONE";
         bool help                   = false;
@@ -53,7 +53,8 @@ public:
     virtual ~CoreServer() {};
 
 public:
-    int start();
+    int start_http();
+    int start_icmp();
 
 private:
     unsigned int ms = 1; // time ms
