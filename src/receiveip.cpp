@@ -1,11 +1,6 @@
-
 #include    <iostream>
-#include    <stdio.h>
-#include    <string.h>
-#include    <stdlib.h>
 #include    <netdb.h>
 #include    <arpa/inet.h>
-
 
 std::string get_ip_host(char *host) {
 
@@ -16,7 +11,7 @@ std::string get_ip_host(char *host) {
 
     if ((chost = gethostbyname(host)) == NULL)
     {
-        perror("[-] Gethost: ");
+        perror("\033[031m[-] Can't do it");
         exit(-1);
     }
 
