@@ -19,7 +19,7 @@ struct opt::options_flag opt::parse(int argc, char *argv[]) {
     for (int i = 0; i < argc; i++) {
         try {
             if (argv[i] == array_opt.at(0)) {
-                set_options.mode        = argv[i + 1];
+                set_options.mode        = atoi(argv[i + 1]);
             }
             if (argv[i] == array_opt.at(1)) {
                 set_options.host        = get_ip_host(argv[i + 1]);
