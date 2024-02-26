@@ -8,35 +8,36 @@ int main(int argc, char *argv[]) {
     struct opt::options_flag conf = opt::parse(argc, argv);
     CoreServer Kernel(conf);
 
-    while (true) {
+    while (true)
+    {
+        try{
 
-        std::vector<std::thread> tsplit;
+            std::thread * begin_thread = new std::thread [conf.thread];
 
-        try {
+            for (int i = 0; i < conf.thread;i++) {
 
-            for (int i = 0; i < conf.thread; i++)
+                switch (conf.mode) {
+                    case HTTP:
+                        begin_thread[i] = std::thread(&CoreServer::start_http, &Kernel);
+                        break;
 
-                if (conf.mode == "http")
-                    tsplit.push_back(std::thread(&CoreServer::start_http, &Kernel));
+                    case ICMP:
+                        begin_thread[i] = std::thread(&CoreServer::start_icmp, &Kernel);
+                        break;
 
-                else if (conf.mode == "icmp")
-                    tsplit.push_back(std::thread(&CoreServer::start_icmp, &Kernel));
-
-                else {
-                    opt::show_help();
-                    exit(-1);
+                    default:
+                        opt::show_help();
+                        exit(-1);
                 }
+            }
 
-            for (auto &th: tsplit)
-                th.join();
+            for (int k = 0; k < conf.thread;k++)
+                begin_thread[k].join();
 
-            tsplit.clear();
+            delete [] begin_thread ;
         }
-        catch (const std::exception &err)
-        {
-            std::cerr << err.what() << std::endl;
+        catch (const std::exception &bad) 
             continue;
-        }
     }
 
     return 0;
