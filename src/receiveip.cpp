@@ -1,7 +1,7 @@
 #include    <iostream>
 #include    <netdb.h>
 #include    <arpa/inet.h>
-#include <cstring>
+#include    <cstring>
 
 std::string get_ip_host(char *host) {
 
