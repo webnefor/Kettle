@@ -28,5 +28,7 @@ How to compile:
 Example:
 
     ./Kettle -v google.com -p 80 -t 25 
+
     
-<img width="494" alt="Screenshot 2024-02-24 at 01 29 10" src="https://github.com/seout/Kettle/assets/113185077/f21d9af4-510d-49f6-82f4-f2f2d1f4acd5">
+    <img width="505" alt="Screenshot 2024-02-26 at 19 28 32" src="https://github.com/seout/Kettle/assets/113185077/f555192a-0378-4ace-84c0-9515ba09e7c5">
+
