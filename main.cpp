@@ -37,8 +37,11 @@ int main(int argc, char *argv[]) {
             delete [] begin_thread ;
         }
         catch (const std::exception &bad) 
-            continue;
+        {
+                continue;
+        }
     }
+        
 
     return 0;
 }
