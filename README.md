@@ -30,5 +30,5 @@ Example:
     ./Kettle -v google.com -p 80 -t 25 
 
     
-    <img width="505" alt="Screenshot 2024-02-26 at 19 28 32" src="https://github.com/seout/Kettle/assets/113185077/f555192a-0378-4ace-84c0-9515ba09e7c5">
+<img width="505" alt="Screenshot 2024-02-26 at 19 28 32" src="https://github.com/seout/Kettle/assets/113185077/f555192a-0378-4ace-84c0-9515ba09e7c5">
 
