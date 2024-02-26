@@ -4,6 +4,8 @@
 #include <string>
 #include <cstdio>
 
+#define HTTP 0
+#define ICMP 1
 
 #define HEADER \
                 \
@@ -34,9 +36,9 @@ namespace opt {
         unsigned int mtime     = 1;
         unsigned int port      = 80;
         unsigned int thread    = 5;
-        std::string mode            = "http";
-        std::string host            = "NONE";
-        bool help                   = false;
+        unsigned int mode      = HTTP;
+        std::string host       = "NONE";
+        bool help              = false;
     };
 
     struct options_flag parse(int, char *[]);
