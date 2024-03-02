@@ -63,12 +63,12 @@ void opt::show_help() {
     using std::cout;
     using std::endl;
 
-    cout << "sprey: option requires an argument -h" << endl;
-    cout << " usage: sprey"<< endl;
-    cout << "\t[-v] target host: example [target.com]" << endl;
-    cout << "\t[-p] port host: (default 80)"<< endl;
-    cout << "\t[-m] mode http or icmp: (default http)"<< endl;
-    cout << "\t[-t] count threads: (default 2)"<< endl;
+    cout << "kettle: option requires an argument -h" << endl;
+    cout << " usage: "<< endl;
+    cout << "-v\ttarget host: example [target.com]" << endl;
+    cout << "-p\tport host: (default 80)"<< endl;
+    cout << "-m\tmode http or icmp: (default http)"<< endl;
+    cout << "-t\tcount threads: (default 2)"<< endl;
     cout << endl;
 
 }
