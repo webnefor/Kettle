@@ -4,7 +4,7 @@ project(Kettle)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Kettle main.cpp
+add_executable(kettle main.cpp
         src/config.cpp
         src/http.cpp
         src/icmp.cpp
