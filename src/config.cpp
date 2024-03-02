@@ -64,11 +64,11 @@ void opt::show_help() {
     using std::endl;
 
     cout << "kettle: option requires an argument -h" << endl;
-    cout << " usage: "<< endl;
-    cout << "-v\ttarget host: example [target.com]" << endl;
-    cout << "-p\tport host: (default 80)"<< endl;
-    cout << "-m\tmode http or icmp: (default http)"<< endl;
-    cout << "-t\tcount threads: (default 2)"<< endl;
+    cout << "usage: "<< endl;
+    cout << "\t-v\ttarget host: example [target.com]" << endl;
+    cout << "\t-p\tport host: (default 80)"<< endl;
+    cout << "\t-m\tmode http or icmp: (default http)"<< endl;
+    cout << "\t-t\tcount threads: (default 2)"<< endl;
     cout << endl;
 
 }
