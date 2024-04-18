@@ -1,3 +1,7 @@
+//
+// github.com/webnefor
+// (c) Job
+//
 
 #include "src/config.hpp"
 #include <thread>
