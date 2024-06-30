@@ -29,6 +29,6 @@ Example:
 
     ./kettle -v google.com -m 1 -p 80 -t 25
 
-    
-<img width="505" alt="Screenshot 2024-02-26 at 19 28 32" src="https://github.com/seout/Kettle/assets/113185077/f555192a-0378-4ace-84c0-9515ba09e7c5">
+<img width="551" alt="Screenshot 2024-06-30 at 20 46 06" src="https://github.com/webnefor/Kettle/assets/113185077/165146dc-86b4-482f-8d0d-b84e5e0b5c82">
+
 
