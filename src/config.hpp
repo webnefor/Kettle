@@ -26,6 +26,7 @@
     "Content-Length: 0\r\n"\
     "\r\n"
 
+extern unsigned short checksum(void *b, int len);
 
 
 namespace opt {
