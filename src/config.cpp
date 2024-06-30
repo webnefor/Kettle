@@ -1,5 +1,5 @@
 #include "hcore.hpp"
-
+#include <unistd.h>
 
 struct opt::options_flag opt::parse(int argc, char *argv[]) {
 
@@ -55,6 +55,16 @@ struct opt::options_flag opt::parse(int argc, char *argv[]) {
         opt::show_help();
         exit(1);
     }
+
+    if (set_options.mode)
+        if (geteuid() == 0) {
+
+            printf("Running with root permissions.\n");
+        } else {
+//            printf("\033[031m[%i]",args->port);
+            printf("\033[031mNot running with root permissions.\n");
+            exit(-1);
+        }
 
     return set_options;
 }
