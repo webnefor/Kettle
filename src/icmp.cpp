@@ -1,7 +1,15 @@
 #include "config.hpp"
 
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#include <netinet/in.h>
+#include <sys/select.h>
+#include <unistd.h>
+#include <cstring>
+#include <netinet/ip_icmp.h>
 
 unsigned short checksum(void *b, int len) {
+
     unsigned short *buf = static_cast<unsigned short *>(b);
     unsigned int sum = 0;
     unsigned short result;
@@ -21,7 +29,6 @@ int CoreServer::start_icmp() {
     std::string ip_addr = CoreServer::host;
 
     char *p_addr = new char[ip_addr.length() + 1];
-    // Копируем содержимое std::string в выделенную память
     std::strcpy(p_addr, ip_addr.c_str());
     int sockfd = socket(AF_INET, SOCK_RAW, IPPROTO_ICMP);
 
@@ -29,8 +36,8 @@ int CoreServer::start_icmp() {
         perror("socket");
         return 1;
     }
-//
-//    // Создаем ICMP эхо-запрос
+
+//  Create ICMP PACKET ECHO
     struct icmp icmphdr;
     icmphdr.icmp_type = ICMP_ECHO;
     icmphdr.icmp_code = 0;
@@ -39,7 +46,7 @@ int CoreServer::start_icmp() {
     icmphdr.icmp_cksum = 0;
     icmphdr.icmp_cksum = checksum(&icmphdr, sizeof(icmphdr));
 
-//    // Указываем адрес назначения
+//  Dest addr
     struct sockaddr_in dest_in;
 
     memset(&dest_in, 0, sizeof(struct sockaddr_in));
@@ -50,13 +57,13 @@ int CoreServer::start_icmp() {
 
 
 //    printf("%s", p_addr);
-//    // Отправляем пакет
+
     if (sendto(sockfd, &icmphdr, sizeof(icmphdr), 0, (struct sockaddr *)&dest_in, sizeof(dest_in)) <= 0) {
         perror("sendto");
         return 1;
     }
 
-    printf("\033[032m64 bytes to (%s)\n", CoreServer::host.c_str());
+    printf("\033[032m64 bytes to (%s) [ICMP]\n", CoreServer::host.c_str());
     close(sockfd);
 
     return 0;
