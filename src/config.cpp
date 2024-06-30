@@ -57,7 +57,7 @@ struct opt::options_flag opt::parse(int argc, char *argv[]) {
     }
 
     if (set_options.mode)
-        if (geteuid() !== 0) {
+        if (geteuid() != 0) {
 //          printf("\033[031m[%i]",args->port);
             printf("\033[031mNot running with root permissions.\n");
             exit(-1);
